@@ -12,6 +12,7 @@ function SignInWithGithub() {
       mutationFn: async () => {
         const { data } = await authClient.signIn.social({
           provider: "github",
+          callbackURL: "/dashboard"
         });
 
         return data;
