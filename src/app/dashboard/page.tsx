@@ -82,7 +82,6 @@ function Dashboard() {
                 duration: 0.8,
                 delay: index * 0.8,
               }}
-
               className="w-full"
             >
               <Card className="w-full border border-primary">
