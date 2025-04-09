@@ -7,6 +7,8 @@ import { Loader2 } from "lucide-react";
 import { useState } from "react";
 import SignInWithGoogle from "./components/SignInWithGoogle";
 import SignInWithGithub from "./components/SignInWithGithub";
+import { toast } from "sonner";
+import {motion} from "framer-motion";
 
 function Auth() {
   // Track the value of the email input
@@ -21,12 +23,28 @@ function Auth() {
           callbackURL: "/dashboard",
         });
 
+        toast.success("Sign in successful, please check your email for a sign in link")
+
         return data;
-      },
+      }
     });
 
   return (
-    <main className="flex flex-col gap-4 px-4 justify-center items-center min-h-screen">
+    <motion.main 
+    initial={{
+      x: -400,
+      opacity: 0
+    }}
+
+    animate={{
+      x: 1,
+      opacity: 1
+    }}
+
+    transition={{
+      duration: 0.8
+    }}
+    className="flex flex-col gap-4 px-4 justify-center items-center min-h-screen">
       {/* Copy */}
       <article className="flex flex-col justify-center items-center text-center gap-2">
         <h1 className="font-semibold text-3xl bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-800">
@@ -66,7 +84,7 @@ function Auth() {
         <SignInWithGoogle />
         <SignInWithGithub />
       </article>
-    </main>
+    </motion.main>
   );
 }
 
