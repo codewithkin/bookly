@@ -25,9 +25,9 @@ export const auth = betterAuth({
     magicLink({
       sendMagicLink: async ({ email, token, url }, request) => {
         await transporter.sendMail({
-          from: '"Bookly" <no-reply@bookly.com>', // Replace with your sender email
+          from: '"Bookly" <kinzinzombe07@gmail.com>', // Replace with your sender email
           to: email,
-          subject: "🚀 Your Magic Login Link to Bookly",
+          subject: "🚀 Sign in to Bookly",
           html: `
             <div style="font-family: sans-serif; color: #333;">
               <h2 style="color: #4F46E5;">Hey there! 👋</h2>

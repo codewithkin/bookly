@@ -12,7 +12,7 @@ function SignInWithGoogle() {
       mutationFn: async () => {
         const { data } = await authClient.signIn.social({
           provider: "google",
-          callbackURL: "/dashboard"
+          callbackURL: "/dashboard",
         });
 
         return data;
