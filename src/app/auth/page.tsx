@@ -23,9 +23,7 @@ function Auth() {
           callbackURL: "/dashboard",
         });
 
-        toast.success(
-          "Success ! Please check your email for a sign in link",
-        );
+        toast.success("Success ! Please check your email for a sign in link");
 
         return data;
       },
