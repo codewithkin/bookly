@@ -14,6 +14,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import { motion } from "framer-motion";
 import MonthlyOverview from "./components/charts/MonthlyOverview";
+import Appointments from "./components/Appointments";
 
 function Dashboard() {
   // Get the user's data
@@ -113,7 +114,11 @@ function Dashboard() {
           <MonthlyOverview appointments={data.appointments} />
         )}
 
-        {/* 5 last appointments */}
+        {loading ? (
+          <Skeleton className="rounded-lg w-full md:col-span-1 bg-slate-200" />
+        ) : (
+          <Appointments appointments={data.appointments}  />
+        )}
       </article>
     </section>
   );
