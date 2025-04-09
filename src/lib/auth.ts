@@ -2,8 +2,8 @@ import { betterAuth } from "better-auth";
 import { magicLink } from "better-auth/plugins";
 import { prismaAdapter } from "better-auth/adapters/prisma";
 import { nextCookies } from "better-auth/next-js";
-import { PrismaClient } from "@/generated/prisma";
 import { transporter } from "./email/transporter";
+import { PrismaClient } from "@/generated/prisma";
 
 export const prisma = new PrismaClient();
 

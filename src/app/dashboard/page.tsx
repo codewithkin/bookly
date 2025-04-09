@@ -13,6 +13,7 @@ import { useEffect, useState } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import { motion } from "framer-motion";
+import WeeklyOverview from "./components/charts/WeeklyOverview";
 
 function Dashboard() {
   // Get the user's data
@@ -95,13 +96,23 @@ function Dashboard() {
                     </CardTitle>
                   </article>
 
-                  <h3 className="text-4xl font-medium text-slate-500">{card.number}</h3>
+                  <h3 className="text-4xl font-medium text-slate-500">
+                    {card.number}
+                  </h3>
                 </CardContent>
               </Card>
             </motion.article>
           ))}
         </article>
       )}
+
+      {/* 4 column grid */}
+      <article className="grid gap-4 md:grid-cols-4 mt-8">
+        {/* Weekly Overview */}
+        <WeeklyOverview />
+
+        {/* 5 last appointments */}
+      </article>
     </section>
   );
 }

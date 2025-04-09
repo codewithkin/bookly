@@ -1,5 +1,4 @@
 import { auth, prisma } from "@/lib/auth";
-import { authClient } from "@/lib/auth-client";
 import { headers } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -9,6 +8,7 @@ export async function GET(req: NextRequest) {
     const session = await auth.api.getSession({
       headers: await headers(),
     });
+
 
     const id = session?.user.id;
 
