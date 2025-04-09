@@ -13,7 +13,7 @@ import { useEffect, useState } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import { motion } from "framer-motion";
-import WeeklyOverview from "./components/charts/WeeklyOverview";
+import MonthlyOverview from "./components/charts/MonthlyOverview";
 
 function Dashboard() {
   // Get the user's data
@@ -27,8 +27,6 @@ function Dashboard() {
   });
 
   const [cards, setCards] = useState<any>([]);
-
-  console.log("User data: ", data);
 
   const generateCards = (user: any) => [
     {
@@ -108,8 +106,12 @@ function Dashboard() {
 
       {/* 4 column grid */}
       <article className="grid gap-4 md:grid-cols-4 mt-8">
-        {/* Weekly Overview */}
-        <WeeklyOverview />
+        {/* Monthly Overview */}
+        {loading ? (
+          <Skeleton className="rounded-lg w-full md:col-span-3 bg-slate-200" />
+        ) : (
+          <MonthlyOverview appointments={data.appointments} />
+        )}
 
         {/* 5 last appointments */}
       </article>

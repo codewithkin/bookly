@@ -9,7 +9,6 @@ export async function GET(req: NextRequest) {
       headers: await headers(),
     });
 
-
     const id = session?.user.id;
 
     // Get the user's data

@@ -18,29 +18,55 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
+import { Appointment } from "@/generated/prisma";
 
-const chartData = [
-  { month: "January", desktop: 186 },
-  { month: "February", desktop: 305 },
-  { month: "March", desktop: 237 },
-  { month: "April", desktop: 73 },
-  { month: "May", desktop: 209 },
-  { month: "June", desktop: 214 },
-];
+export default function MonthlyOverview({
+  appointments,
+}: {
+  appointments: any;
+}) {
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
 
-const chartConfig = {
-  desktop: {
-    label: "Desktop",
-    color: "hsl(var(--chart-1))",
-  },
-} satisfies ChartConfig;
+  const chartData = months.map((month) => {
+    return {
+      month,
+      appointments:
+        appointments.filter((appointment: Appointment) => {
+          const date = new Date(appointment.date);
 
-export default function WeeklyOverview() {
+          // Get the month from the date
+          const appointmentMonth = months[date.getMonth()];
+
+          return appointmentMonth == month;
+        }).length || 0,
+    };
+  });
+
+  const chartConfig = {
+    appointments: {
+      label: "Appointments",
+      color: "hsl(var(--chart-1))",
+    },
+  } satisfies ChartConfig;
+
   return (
     <Card className="md:col-span-3">
       <CardHeader>
-        <CardTitle>Line Chart</CardTitle>
-        <CardDescription>January - June 2024</CardDescription>
+        <CardTitle>Appointments Trends</CardTitle>
+        <CardDescription>From January to December</CardDescription>
       </CardHeader>
       <CardContent>
         <ChartContainer config={chartConfig}>
@@ -65,23 +91,15 @@ export default function WeeklyOverview() {
               content={<ChartTooltipContent hideLabel />}
             />
             <Line
-              dataKey="desktop"
-              type="natural"
-              stroke="var(--color-desktop)"
+              dataKey="appointments"
+              type="monotone"
+              stroke="var(--color-primary)"
               strokeWidth={2}
               dot={false}
             />
           </LineChart>
         </ChartContainer>
       </CardContent>
-      <CardFooter className="flex-col items-start gap-2 text-sm">
-        <div className="flex gap-2 font-medium leading-none">
-          Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
-        </div>
-        <div className="leading-none text-muted-foreground">
-          Showing total visitors for the last 6 months
-        </div>
-      </CardFooter>
     </Card>
   );
 }
