@@ -95,7 +95,7 @@ function Dashboard() {
                     </CardTitle>
                   </article>
 
-                  <h3 className="text-4xl font-semibold">{card.number}</h3>
+                  <h3 className="text-4xl font-medium text-slate-500">{card.number}</h3>
                 </CardContent>
               </Card>
             </motion.article>
