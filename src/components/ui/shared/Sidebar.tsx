@@ -19,6 +19,7 @@ import {
   LogOut,
 } from "lucide-react";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 export type SidebarLink = {
   icon: LucideIcon;
@@ -79,9 +80,12 @@ function Sidebar() {
             <Button
               variant={link.href == path ? "secondary" : "ghost"}
               key={link.href}
+              asChild
             >
-              <link.icon className="mr-2" />
-              {link.text}
+              <Link href={link.href}>
+                <link.icon className="mr-2" />
+                {link.text}
+              </Link>
             </Button>
           ))}
         </article>
