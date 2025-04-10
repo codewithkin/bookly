@@ -36,17 +36,17 @@ export const sidebarLinks: SidebarLink[] = [
   {
     icon: Calendar,
     text: "Bookings",
-    href: "/dashboard/bookings",
+    href: "/bookings",
   },
   {
     icon: Users,
     text: "Clients",
-    href: "/dashboard/clients",
+    href: "/clients",
   },
   {
     icon: Settings,
     text: "Settings",
-    href: "/dashboard/settings",
+    href: "/settings",
   },
   {
     icon: LogOut,
