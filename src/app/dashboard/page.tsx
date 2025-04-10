@@ -117,7 +117,7 @@ function Dashboard() {
         {loading ? (
           <Skeleton className="rounded-lg w-full md:col-span-1 bg-slate-200" />
         ) : (
-          <Appointments appointments={data.appointments}  />
+          <Appointments appointments={data.appointments} />
         )}
       </article>
     </section>
