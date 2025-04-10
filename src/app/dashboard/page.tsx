@@ -5,6 +5,8 @@ import {
   UserRound,
   Settings as SettingsIcon,
   Briefcase,
+  Link,
+  Plus,
 } from "lucide-react";
 
 import { useQuery } from "@tanstack/react-query";
@@ -15,6 +17,7 @@ import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import { motion } from "framer-motion";
 import MonthlyOverview from "./components/charts/MonthlyOverview";
 import Appointments from "./components/Appointments";
+import { Button } from "@/components/ui/button";
 
 function Dashboard() {
   // Get the user's data
@@ -60,6 +63,28 @@ function Dashboard() {
 
   return (
     <section className="p-4 md:p-8 w-full">
+      <article className="flex flex-col gap-4 md:flex-row justify-between">
+        <h2 className="heading">Dashboard</h2>
+
+        <article className="flex flex-col md:flex-row gap-4 justify-center">
+          {/* Quick action buttons */}
+          <Button size="lg">
+            Share Link
+            <Link />
+          </Button>
+
+          <Button size="lg" variant="secondary">
+            New Appointment
+            <Plus />
+          </Button>
+
+          <Button size="lg" variant="secondary">
+            New Service
+            <Plus />
+          </Button>
+        </article>
+      </article>
+
       {/* Data cards */}
       {loading ? (
         <article className="grid gap-4 md:gap-4 sm:grid-cols-2 md:grid-cols-4 items-center justify-center w-full">
