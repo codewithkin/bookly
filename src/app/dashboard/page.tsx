@@ -1,13 +1,5 @@
 "use client";
-import {
-  CalendarCheck,
-  Bell,
-  UserRound,
-  Settings as SettingsIcon,
-  Briefcase,
-  Link,
-  Plus,
-} from "lucide-react";
+import { CalendarCheck, Bell, UserRound, Briefcase, Plus } from "lucide-react";
 
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
@@ -18,6 +10,9 @@ import { motion } from "framer-motion";
 import MonthlyOverview from "./components/charts/MonthlyOverview";
 import Appointments from "./components/Appointments";
 import { Button } from "@/components/ui/button";
+import ShareLink from "@/components/ui/shared/actions/ShareLink";
+import { root } from "@/lib/root";
+import Link from "next/link";
 
 function Dashboard() {
   // Get the user's data
@@ -68,19 +63,20 @@ function Dashboard() {
 
         <article className="flex flex-col md:flex-row gap-4 justify-center">
           {/* Quick action buttons */}
-          <Button size="lg">
-            Share Link
-            <Link />
+          {loading ? (
+            <Skeleton className="w-32 h-full bg-slate-200" />
+          ) : (
+            <ShareLink link={`${root}/${data.email}`} />
+          )}
+          <Button size="lg" variant="secondary" asChild>
+            <Link href="appointments/new">
+              New Appointment
+              <Plus />
+            </Link>
           </Button>
 
-          <Button size="lg" variant="secondary">
-            New Appointment
-            <Plus />
-          </Button>
-
-          <Button size="lg" variant="secondary">
-            New Service
-            <Plus />
+          <Button size="lg" variant="secondary" asChild>
+            <Link href="services/new">New Service</Link>
           </Button>
         </article>
       </article>
