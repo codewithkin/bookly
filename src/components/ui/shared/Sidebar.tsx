@@ -35,8 +35,8 @@ export const sidebarLinks: SidebarLink[] = [
   },
   {
     icon: Calendar,
-    text: "Bookings",
-    href: "/bookings",
+    text: "Appointments",
+    href: "/appointments",
   },
   {
     icon: Users,
